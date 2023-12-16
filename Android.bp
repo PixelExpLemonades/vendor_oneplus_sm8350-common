@@ -90,6 +90,17 @@ android_app_import {
 }
 
 android_app_import {
+	name: "pasrservice",
+	owner: "oneplus",
+	apk: "proprietary/vendor/app/pasrservice/pasrservice.apk",
+	certificate: "platform",
+	dex_preopt: {
+		enabled: false,
+	},
+	soc_specific: true,
+}
+
+android_app_import {
 	name: "PowerOffAlarm",
 	owner: "oneplus",
 	apk: "proprietary/product/app/PowerOffAlarm/PowerOffAlarm.apk",
@@ -101,9 +112,9 @@ android_app_import {
 }
 
 android_app_import {
-	name: "HotwordEnrollmentOKGoogle",
+	name: "HotwordEnrollmentOKGoogleHEXAGON",
 	owner: "oneplus",
-	apk: "proprietary/product/priv-app/HotwordEnrollmentOKGoogleHEXAGON/HotwordEnrollmentOKGoogle.apk",
+	apk: "proprietary/product/priv-app/HotwordEnrollmentOKGoogleHEXAGON/HotwordEnrollmentOKGoogleHEXAGON.apk",
 	certificate: "platform",
 	dex_preopt: {
 		enabled: false,
@@ -113,9 +124,9 @@ android_app_import {
 }
 
 android_app_import {
-	name: "HotwordEnrollmentXGoogle",
+	name: "HotwordEnrollmentXGoogleHEXAGON",
 	owner: "oneplus",
-	apk: "proprietary/product/priv-app/HotwordEnrollmentXGoogleHEXAGON/HotwordEnrollmentXGoogle.apk",
+	apk: "proprietary/product/priv-app/HotwordEnrollmentXGoogleHEXAGON/HotwordEnrollmentXGoogleHEXAGON.apk",
 	certificate: "platform",
 	dex_preopt: {
 		enabled: false,
@@ -125,9 +136,9 @@ android_app_import {
 }
 
 android_app_import {
-	name: "OPOnlineConfig",
+	name: "ImsRcsService",
 	owner: "oneplus",
-	apk: "proprietary/system_ext/app/OPOnlineConfig/OPOnlineConfig.apk",
+	apk: "proprietary/system_ext/app/ImsRcsService/ImsRcsService.apk",
 	certificate: "platform",
 	dex_preopt: {
 		enabled: false,
@@ -136,9 +147,31 @@ android_app_import {
 }
 
 android_app_import {
-	name: "OPSoundTuner",
+	name: "PerformanceMode",
 	owner: "oneplus",
-	apk: "proprietary/system_ext/app/OPSoundTuner/OPSoundTuner.apk",
+	apk: "proprietary/system_ext/app/PerformanceMode/PerformanceMode.apk",
+	certificate: "platform",
+	dex_preopt: {
+		enabled: false,
+	},
+	system_ext_specific: true,
+}
+
+android_app_import {
+	name: "PowerSaveMode",
+	owner: "oneplus",
+	apk: "proprietary/system_ext/app/PowerSaveMode/PowerSaveMode.apk",
+	certificate: "platform",
+	dex_preopt: {
+		enabled: false,
+	},
+	system_ext_specific: true,
+}
+
+android_app_import {
+	name: "QtiTelephony",
+	owner: "oneplus",
+	apk: "proprietary/system_ext/app/QtiTelephony/QtiTelephony.apk",
 	certificate: "platform",
 	dex_preopt: {
 		enabled: false,
@@ -154,6 +187,30 @@ android_app_import {
 	dex_preopt: {
 		enabled: false,
 	},
+	system_ext_specific: true,
+}
+
+android_app_import {
+	name: "workloadclassifier",
+	owner: "oneplus",
+	apk: "proprietary/system_ext/app/workloadclassifier/workloadclassifier.apk",
+	certificate: "platform",
+	dex_preopt: {
+		enabled: false,
+	},
+	system_ext_specific: true,
+}
+
+android_app_import {
+	name: "DaxUI",
+	owner: "oneplus",
+	apk: "proprietary/system_ext/priv-app/DaxUI/DaxUI.apk",
+	overrides: ["AudioFX", "MusicFX", "SoundAmplifierPrebuilt"],
+	certificate: "platform",
+	dex_preopt: {
+		enabled: false,
+	},
+	privileged: true,
 	system_ext_specific: true,
 }
 
@@ -215,6 +272,24 @@ android_app_import {
 	},
 	privileged: true,
 	system_ext_specific: true,
+}
+
+dex_import {
+	name: "QPerformance",
+	owner: "oneplus",
+	jars: ["proprietary/system/framework/QPerformance.jar"],
+}
+
+dex_import {
+	name: "QXPerformance",
+	owner: "oneplus",
+	jars: ["proprietary/system/framework/QXPerformance.jar"],
+}
+
+dex_import {
+	name: "UxPerformance",
+	owner: "oneplus",
+	jars: ["proprietary/system/framework/UxPerformance.jar"],
 }
 
 dex_import {
@@ -331,6 +406,15 @@ prebuilt_etc_xml {
 }
 
 prebuilt_etc_xml {
+	name: "vendor.qti.memory.pasrmanager@1.0-service",
+	owner: "oneplus",
+	src: "proprietary/vendor/etc/vintf/manifest/vendor.qti.memory.pasrmanager@1.0-service.xml",
+	filename_from_src: true,
+	sub_dir: "vintf/manifest",
+	soc_specific: true,
+}
+
+prebuilt_etc_xml {
 	name: "manifest_android.hardware.drm@1.3-service.widevine",
 	owner: "oneplus",
 	src: "proprietary/odm/etc/vintf/manifest/manifest_android.hardware.drm@1.3-service.widevine.xml",
@@ -340,9 +424,18 @@ prebuilt_etc_xml {
 }
 
 prebuilt_etc_xml {
-	name: "manifest_oplus_cameraextension_aidl",
+	name: "manifest_oplus_cameraextension",
 	owner: "oneplus",
-	src: "proprietary/odm/etc/vintf/manifest/manifest_oplus_cameraextension_aidl.xml",
+	src: "proprietary/odm/etc/vintf/manifest/manifest_oplus_cameraextension.xml",
+	filename_from_src: true,
+	sub_dir: "vintf/manifest",
+	device_specific: true,
+}
+
+prebuilt_etc_xml {
+	name: "manifest_oplus_cammidasservice",
+	owner: "oneplus",
+	src: "proprietary/odm/etc/vintf/manifest/manifest_oplus_cammidasservice.xml",
 	filename_from_src: true,
 	sub_dir: "vintf/manifest",
 	device_specific: true,
@@ -352,6 +445,15 @@ prebuilt_etc_xml {
 	name: "manifest_oplus_fingerprint",
 	owner: "oneplus",
 	src: "proprietary/odm/etc/vintf/manifest/manifest_oplus_fingerprint.xml",
+	filename_from_src: true,
+	sub_dir: "vintf/manifest",
+	device_specific: true,
+}
+
+prebuilt_etc_xml {
+	name: "manifest_oplus_performance",
+	owner: "oneplus",
+	src: "proprietary/odm/etc/vintf/manifest/manifest_oplus_performance.xml",
 	filename_from_src: true,
 	sub_dir: "vintf/manifest",
 	device_specific: true,
